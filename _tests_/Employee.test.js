@@ -8,30 +8,6 @@ describe("Employee", () => {
             expect("name" in obj).toEqual(true);
             }
         );
-        it("should set a 'name' when created", () => {
-            const name = "Faris Kadir";
-            const obj = new Employee(name);
-
-            expect(obj.name).toEqual(name);
-            }
-        );
-        it("should set a 'id' when created", () => {
-            const name = "Faris Kadir";
-            const id = "83";
-            const obj = new Employee(name, id);
-
-            expect(obj.id).toEqual(id);
-            }
-        );
-        it("should set a 'email' when created", () => {
-            const name = "Faris Kadir";
-            const id = "83";
-            const email = "faris.kadir@gmail.com";
-            const obj = new Employee(name, id, email);
-
-            expect(obj.email).toEqual(email);
-            }
-        );
     })
 
     describe("getName",  () => {

@@ -18,17 +18,30 @@ describe("Engineer", () => {
             const gitHub = "FarisKadir"
             const obj = new Engineer(name, id, email, gitHub);
 
-            expect(obj.getGitHub()).toBe(gitHub);
+            expect(obj.getGitHub()).toEqual(gitHub);
+            }
+        );
+    });
+
+    describe("getName",  () => {
+        it("should return the Engineer name.", () => {
+            const name = "Faris Kadir";
+            const id = "83";
+            const email = "faris.kadir@gmail.com";
+            const gitHub = "FarisKadir"
+            const obj = new Engineer(name, id, email, gitHub);
+
+            expect(obj.getName()).toEqual(name);
             }
         );
     });
 
     describe("getID",  () => {
-        it("should return the employee id.", () => {
+        it("should return the Engineer id.", () => {
             const name = "Faris Kadir";
             const id = "83";
             const email = "faris.kadir@gmail.com";
-            const gitHub = "FarisKadir";
+            const gitHub = "FarisKadir"
             const obj = new Engineer(name, id, email, gitHub);
 
             expect(obj.getID()).toEqual(id);
@@ -37,7 +50,7 @@ describe("Engineer", () => {
     });
 
     describe("getEmail",  () => {
-        it("should return the employee email address.", () => {
+        it("should return the Engineer email address.", () => {
             const name = "Faris Kadir";
             const id = "83";
             const email = "faris.kadir@gmail.com";
@@ -50,7 +63,7 @@ describe("Engineer", () => {
     });
 
     describe("getRole",  () => {
-        it("should return an role of 'Employee'.", () => {
+        it("should return an role of 'Engineer'.", () => {
             const obj = new Engineer();
 
             expect(obj.getRole()).toEqual('Engineer');
