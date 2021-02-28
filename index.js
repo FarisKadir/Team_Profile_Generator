@@ -3,106 +3,127 @@ const fs = require("fs");
 const Engineer = require('./lib/engineer');
 const Manager = require('./lib/manager');
 const Intern = require('./lib/intern');
-let addEmp = false;
 const empArr = [];
-const createEmp = (obj) => {
-    switch(obj.role)   {
-        case `Manager`:
-            newEmp = new Manager(obj.name,obj.id,obj.email,obj.phone);
-            empArr.push(newEmp);
-            break;
-        case `Engineer`:
-            newEmp = new Engineer(obj.name,obj.id,obj.email,obj.gitHub);
-            empArr.push(newEmp);
-            break;
-        case `Intern`:
-            newEmp = new Intern(obj.name,obj.id,obj.email,obj.school);
-            empArr.push(newEmp);
-            break;
-        default:
-            console.log("You must select an employee role");
-    };
-};
-const questions = [
+
+
+const addEmp = () => {
+    inquirer.prompt([
     {
         type: "list",
-        message: "What role does the employee have? ",
-        choices: ["Manager", "Engineer", "Intern"],
+        message: "Do you want to add another team member?",
+        choices: ["Yes, an Engineer", "Yes, an Intern", "No, I'm finished building my team."],
         name: "role"
-    },
-    {
-        type: "input",
-        message: "What is their name? ",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "What is their employee ID? ",
-        name: "id",
-    },
-    {
-        type: "input",
-        message: "What is their email address?",
-        name: "email",
-    },
-    {
-        type: "input",
-        message: "What is their office phone number?",
-        name: "phone",
-        when: (answers) => answers.role === "Manager",
-    },
-    {
-        type: "input",
-        message: "What is their gitHub username?",
-        name: "gitHub",
-        when: (answers) => answers.role === "Engineer"
-    },
-    {
-        type: "input",
-        message: "What is their gitHub username?",
-        name: "school",
-        when: (answers) => answers.role === "Intern"
-    },
-    {
-        type: "confirm",
-        message: "Would you like to add another employee?",
-        name: "addEmp",
     }
-];
-
-
-
-// inquirer.prompt(questions)
-//     .then((answers) => {
-//         createEmp(answers);
-//         addEmp = `${answers.addEmp}`;
-//         console.log(addEmp);
-// });
-
-do  {
-    inquirer.prompt(questions)
-    .then((answers) => {
-        createEmp(answers);
-        console.log(addEmp);
-        addEmp = `${answers.addEmp}`;
-        console.log(addEmp);
+    ]).then((answers) =>    {
+        switch(answers.role)    {
+            case "Yes, an Engineer":
+                engQ();
+                break;
+            case "Yes, an Intern":
+                intQ();
+                break;
+            case "No, I'm finished building my team.":
+                buildHtml();
+                break;
+        };
     });
-} while (addEmp);
+};
+
+
+const manQ = () =>  {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is your manager's name? ",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is their employee ID? ",
+            name: "id",
+        },
+        {
+            type: "input",
+            message: "What is their email address?",
+            name: "email",
+        },
+        {
+            type: "input",
+            message: "What is their office phone number?",
+            name: "phone",
+        }
+    ]).then((answers) =>    {
+        newEmp = new Manager(answers.name,answers.id,answers.email,answers.phone);
+        empArr.push(newEmp);
+        addEmp();
+    });
+};
+
+
+const engQ = () =>  {
+    inquirer.prompt([
+            {
+                type: "input",
+                message: "What is their name? ",
+                name: "name"
+            },
+            {
+                type: "input",
+                message: "What is their employee ID? ",
+                name: "id",
+            },
+            {
+                type: "input",
+                message: "What is their email address?",
+                name: "email",
+            },
+            {
+                type: "input",
+                message: "What is their gitHub username?",
+                name: "gitHub",
+            }
+        ]).then((answers) =>    {
+            newEmp = new Engineer(answers.name,answers.id,answers.email,answers.gitHub);
+            empArr.push(newEmp);
+            addEmp();
+        });
+};
+
+const intQ = () =>  {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is their name? ",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is their employee ID? ",
+            name: "id",
+        },
+        {
+            type: "input",
+            message: "What is their email address?",
+            name: "email",
+        },
+
+        {
+            type: "input",
+            message: "What school are they attending?",
+            name: "school",
+        }
+    ]).then((answers) =>  {
+        newEmp = new Intern(answers.name,answers.id,answers.email,answers.school);
+        empArr.push(newEmp);
+        addEmp();
+    });
+};
+
+const buildHtml = () => {
+    console.log("We're building!");
+    console.log(JSON.stringify(empArr));
+};
 
 
 
-
-    // while (addEmp) {
-    //     inquirer.prompt(questions)
-    //         .then((answers) => {
-    //             if (answers.addEmployee)    {
-    //                 inquirer.prompt(questions)
-    //                     .then((answers) => {
-    //                         createEmp(answers);
-    //                     });
-    //             } else {
-    //                 addEmp = false;
-    //                 console.log("Ok great, give me a minute to create a list of all your employees");
-    //             };
-    //     });
-    // };
+manQ();
