@@ -3,9 +3,9 @@
 
 ## Description
 
-```
+
 I created this application to allow a user to create an html page that displays team member profile cards for every person in their team. The user only has to answer a few questions about the team members and the application will generate the HTML page. Some of the technologies used in this application are HTML, CSS, JQuery, Node.js, and the Inquirer Package. I also used Classes and Subclasses to create the employee objects.
-```
+
 
 #### Table of Contents
 
@@ -22,15 +22,18 @@ I created this application to allow a user to create an html page that displays 
 
 ## User_Story
 
-```md
+```
+
 AS A manager
 I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles
+
 ```
 
 ## Acceptance_Criteria
 
-```md
+```
+
 GIVEN a command-line application that accepts user input
 WHEN I am prompted for my team members and their information
 THEN an HTML file is generated that displays a nicely formatted team roster based on user input
@@ -48,21 +51,23 @@ WHEN I select the intern option
 THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
+
 ```
 
 ## Video_Walkthrough
-```
+
 The following video shows a walkthrough of the applications functionality and testing.
 
 https://www.youtube.com/watch?v=LEBJ7GRMX4c
-```
+
+
 
 ## Sample
-```
+
 A sample of the html file that gets created can be found here:
 
 https://fariskadir.github.io/Team_Profile_Generator/dist/
-```
+
 
 
 ## Installation_Instructions
