@@ -156,7 +156,6 @@ const empCards = ()  =>  {
 
 
 const generateHtml = () => {
-    console.log(JSON.stringify(empArr));
     let html = 
     `<!DOCTYPE html>
     <html lang="en">

@@ -4,7 +4,7 @@
 ## Description
 
 ```
-
+I created this application to allow a user to create an html page that displays team member profile cards for every person in their team. The user only has to answer a few questions about the team members and the application will generate the HTML page. Some of the technologies used in this application are HTML, CSS, JQuery, Node.js, and the Inquirer Package. I also used Classes and Subclasses to create the employee objects.
 ```
 
 ## User Story
@@ -35,3 +35,7 @@ WHEN I select the intern option
 THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
+
+## Mock-Up
+
+The following image shows a mock-up of the generated HTML's appearance and functionality.
